@@ -1,0 +1,93 @@
+body {
+	margin: 0;
+	padding: 0;	
+	background: url("../imagem/cataratas.jpg");  
+	background-size: 100% 100%;	  	 
+	}
+
+#tudo{
+	width:800px;                /* tamanho da largura  */
+	height:570px;				/* tamanho da altura  */
+	margin: 100px auto;			/* posicao altura da borda na tela   */
+	border-style: double;		/* tipo da borda */
+	text-align: left; 
+	border-radius: 25px;        /* arredondar borda  */  
+	background: rgba(255, 255, 255, 0.5);   /* transparente 0.5(0 a 1) maior valor menos transp.*/		
+	}
+    
+#salva{
+	width:460px;                /* tamanho da largura  */
+	height:360px;				/* tamanho da altura  */
+	margin: 200px 50px 200px 500px;			/* posicao altura da borda na tela   */
+	border-style: double;		/* tipo da borda */
+	text-align: center; 
+	border-radius: 25px;        /* arredondar borda  */  
+	background: rgba(255, 255, 255, 0.5);   /* transparente 0.5(0 a 1) maior valor menos transp.*/		
+	}
+	
+
+/*dd	{
+	margin:0;
+	padding:0;
+	font-weight: bold;
+	}    */
+
+ #principal dl {
+	margin-top:25px;		
+	width: 90%;				    	
+	}   
+
+#principal dt {	
+ 	font-weight:bold;  
+	font-size:17px; 
+	margin:35px 100px 40px;    /* posicao do fieldset  */		
+	line-height: 2.0; 		/* espaços entre linhas  */
+	}	
+
+#divdireita {
+	text-align: right;
+	}
+
+#principal dd a {
+	display:block;  
+	color:#222;  	
+	text-decoration:nome;   
+	font-weight: bold; 
+	font-size:18px;
+	padding-left:540px;		/*  posicao da letra mais na direita  */ 	
+	} 
+				
+#principal dd a:hover {
+	width: 25%;				/* tamanho da linha selecionado  */		
+    background: rgba(46, 46, 46, 0.3);	 /* transparente 0.4(0 a 1) maior valor menos transp.*/
+    box-shadow: 0px 0px 1em black;	
+	}	
+								
+a:link{
+	text-decoration: none;    /* sem linha  */
+	}
+
+#rodape {
+    font-size: 20px;        
+    text-align: center;
+    padding: 15px;
+    margin-top: 95px;
+    }
+
+.dados input#nome {width:399px; font-size:15px}
+.dados input#cpf {width:150px; font-size:15px}
+.dados input#rg {width:150px; font-size:15px}
+
+.dados input#cep {width:75px; font-size:15px}
+.dados input#rua {width:443px; font-size:15px}
+.dados input#num {width:145px; font-size:15px}
+.dados input#com {width:210px; font-size:15px}
+.dados input#bairro {width:325px; font-size:15px}
+.dados input#cidade {width:363px; font-size:15px}
+.dados input#uf {width:18px; font-size:15px}  
+
+.dados input#fixo {width:115px; font-size:15px}
+.dados input#celular {width:120px; font-size:15px}
+
+form.dados label span {color:#c30;}     
+

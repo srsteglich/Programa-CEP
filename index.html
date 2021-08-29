@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<body >   
+    <head>
+        <title>	Cadastro Pessoal</title>		
+        <link href="estilos/estilos.css" rel="stylesheet" type="text/css" media="all"> 
+        <meta charset ="UTF-8" />
+        <style>p.groove {border-style: groove; border-radius:10px; font-size: 12px; font-weight: bold; background-color: rgba(27, 27, 27, 0.4);}</style>	<!-- rodape borda tipo groove e arrendondado, fonte, tam -->
+        <script>
+            function limpa_formulário_cep() {
+                    //Limpa valores do formulário de cep.
+                    document.getElementById('rua').value=("");
+                    document.getElementById('bairro').value=("");
+                    document.getElementById('cidade').value=("");
+                    document.getElementById('uf').value=("");
+            }
+            function meu_callback(conteudo) {
+                if (!("erro" in conteudo)) {
+                    //Atualiza os campos com os valores.
+                    document.getElementById('rua').value=(conteudo.logradouro);
+                    document.getElementById('bairro').value=(conteudo.bairro);
+                    document.getElementById('cidade').value=(conteudo.localidade);
+                    document.getElementById('uf').value=(conteudo.uf);
+                } else {
+                    //CEP não Encontrado.
+                    limpa_formulário_cep();
+                    alert("CEP não encontrado.");
+                }
+            }
+            
+            function pesquisacep(valor) {
+                //Nova variável "cep" somente com dígitos.
+                var cep = valor.replace(/\D/g, '');
+                //Verifica se campo cep possui valor informado.
+                if (cep != "") {
+                    //Expressão regular para validar o CEP.
+                    var validacep = /^[0-9]{8}$/;
+                    //Valida o formato do CEP.
+                    if(validacep.test(cep)) {
+                        //Preenche os campos com "..." enquanto consulta webservice.
+                        document.getElementById('rua').value="rua";
+                        document.getElementById('bairro').value="bairro";
+                        document.getElementById('cidade').value="cidade";
+                        document.getElementById('uf').value="uf";
+                        //Cria um elemento javascript.
+                        var script = document.createElement('script');
+                        //Sincroniza com o callback.
+                        script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+                        //Insere script no documento e carrega o conteúdo.
+                        document.body.appendChild(script);
+                    } else {
+                        //CEP é inválido.
+                        limpa_formulário_cep();
+                        alert("Formato de CEP inválido.");
+                    }
+                } else {
+                    //cep sem valor, limpa formulário.
+                    limpa_formulário_cep();
+                }
+            };
+        </script>    
+    </head>
+        <div id="tudo">	           	
+           <div id="principal">	                               				
+                <center><p><h2> CADASTRO PESSOAL </h2></p></center>
+                <dt>                    
+                    <div id="dados">            
+                        <fieldset style="border-radius:10px;" > <br />  <!-- borda arrendondado -->                                      
+                        <form method="post" class="dados">                            
+                            <label for="nome">Nome completo:<span>*</span></label>
+                            <input type="text" name="nome" id="nome" placeholder="Digite seu nome" required maxlength="60" /> <br />
+                            <label for="cpf">Nº do CPF:<span>*</span></label>
+                            <input type="text" name="cfp" id="cpf" placeholder="Digite seu CPF" required maxlength="14" /> &emsp; &emsp; <!-- 4 espaços-->
+                            <label for="rg">Nº do RG:</label>
+                            <input type="num" name="rg" id="rg" maxlength="14" > <br />                              
+
+                            <label for="sexo">Sexo: </label>
+                            <select name="sexo" id="sexo" style=border-radius:5px;>
+                                <option id="esc1" value="" style=font-size:15px>Escolha um sexo</option>
+                                <option value="recurso" style=font-size:15px> Masculino </option>
+                                <option value="recurso" style=font-size:15px> Feminino </option>
+                            </select>
+                            <br />
+                            <label for="cep">CEP:
+                            <input type="text" name="cep" id="cep" value="" size="10" maxlength="9" onblur="pesquisacep(this.value);"/> </label> 
+                            &ensp; Após digitar o CEP, usa a tecla TAB. <br />
+                             
+                            <label for="rua">Endereço:
+                            <input type="text" name="rua" id="rua" required size="60" /></label> <br />
+                            <label for="num">Nº:<span>*</span></label>
+                            <input type="text" name="num" id="num" required maxlength="20" /> &ensp; &ensp; 
+                            <label for="com">Complemento:
+                            <input type="text" name="com" id="com" maxlength="30" /> <br /> 
+
+                            <label for="bairro">Bairro:
+                            <input type="text" name="bairro" id="bairro" size="30" /> </label> <br />
+                            <label for="cidade">Cidade:
+                            <input type="text" name="cidade" id="cidade" size="50" /> </label>       
+                            <label for="uf">UF:
+                            <input type="text" name="uf" id="uf" size="2" /> </label> <br />
+
+                            <label for="fixo">Telefone Fixo:</label>
+                            <input type="text" name="fixo" id="fixo" maxlength="14" />  &emsp; &ensp;
+                            <label for="celular">Telefone Celular:<span>*</span></label>
+                            <input type="text" name="celular" id="celular" placeholder="Digite seu Celular" required maxlength="14"  /> <br />
+                            <br />                        
+                            <div id=divdireita>						
+                               <button type="submit" name="enviar" > Cadastrar </button>                              
+                            </div>                             
+                        </form>                                   
+                    </fieldset>              
+                    </div>                                         
+                </dt>
+                <!-- <dl>						
+                    <dd><a href="salvar.html">  Salvar </a></dd> <br />	
+                </dl> -->                
+            </div>	                        
+            <div id="rodape">
+                <p class="groove">Copyright &copy; 2021 - Desenvolvido por Sérgio Renato Steglich </p>                 
+            </div>
+        </div>    
+</body>    
+</html>
+
